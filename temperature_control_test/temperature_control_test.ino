@@ -6,6 +6,14 @@
 String tempStr, humidStr, MAXTStr, MINTStr, MAXHStr, MINHStr;
 
 float temp, humid, MAXT, MINT, MAXH, MINH;
+float testTemperatureValues[] = { 23.4, 23.9, 24.8, 25.0, 24.1, 21.1, 27.9 };
+float testHumidityValues[] = { 67.9, 78.3, 91.1, 50.1, 50.3, 51.7, 67.5 };
+
+int testTemperatureValuesLength = 6;
+int testHumidityValuesLength = 6;
+
+int testValuesPositionIndex = 0;
+int testHumidityValuesIndex = 0;
 
 char incomingByte;
 
@@ -25,8 +33,20 @@ void loop() {
     delay(STANDART_DELAY);
   }
 
-  temp = 25;
-  humid = 55;
+  if (testValuesPositionIndex == testTemperatureValuesLength) {
+    testValuesPositionIndex = 0;
+  } else {
+    testValuesPositionIndex++;
+  }
+
+  if (testHumidityValuesIndex == testHumidityValuesLength) {
+    testHumidityValuesIndex = 0;
+  } else {
+    testHumidityValuesIndex++;
+  }
+
+  temp = testTemperatureValues[testValuesPositionIndex];
+  humid = testHumidityValues[testHumidityValuesIndex];
 
   if (firstLoop == 0) {
     MAXT = temp;
