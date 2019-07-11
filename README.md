@@ -1,8 +1,19 @@
-Project tested with this setup:
+# arduino-temperature-control
+
+Temperature monitoring. Android app: https://github.com/fartem/android-remote-temperature-control-client
+
+## Release version run configuration
 - Android application (now adopted to new Android SDK, [link](https://github.com/fartem/android-remote-temperature-client));
-- Arduino (used by UNO);
-- power cable (using a standard cable to connect to a PC);
-- Bluetooth module (used by HC-06);
-- temperature and humidity sensor (used by DHT22);
+- Arduino (tested on UNO (original and copy));
+- power cable (using a standard cable);
+- Bluetooth module (tested on HC-05 and HC-06);
+- temperature and humidity sensor (tested on DHT22, now adopted only for this sensor);
 - resistor for temperature and humidity sensor;
+- wires for connecting components.
+
+## Test version run configuration
+- Android application (now adopted to new Android SDK, [link](https://github.com/fartem/android-remote-temperature-client));
+- Arduino (tested on UNO (original and copy));
+- power cable (using a standard cable);
+- Bluetooth module (tested on HC-05 and HC-06);
 - wires for connecting components.
