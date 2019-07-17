@@ -3,9 +3,16 @@
 #define STANDART_DELAY 1400
 #define ACTION_DELAY 100
 
-String tempStr, humidStr, MAXTStr, MINTStr, MAXHStr, MINHStr;
+#define TEMP_SYMBOL "t"
+#define TEMP_MAX_SYMBOL "m"
+#define TEMP_MIN_SYMBOL "i"
+#define HUMID_SYMBOL "h"
+#define HUMID_MAX_SYMBOL "w"
+#define HUMID_MIN_SYMBOL "q"
 
-float temp, humid, MAXT, MINT, MAXH, MINH;
+#define RESET_SYMBOL 'e'
+
+float temp, humid, tempMax, tempMin, humidMax, humidMin;
 float testTemperatureValues[] = { 23.4, 23.9, 24.8, 25.0, 24.1, 21.1, 27.9 };
 float testHumidityValues[] = { 67.9, 78.3, 91.1, 50.1, 50.3, 51.7, 67.5 };
 
@@ -26,13 +33,8 @@ void setup() {
 void(* resetFunc) (void) = 0;
 
 void loop() {
-  if (firstLoop) {
-    delay (FIRST_LOOP_DELAY);
-    firstLoop = false;
-  } else {
-    delay(STANDART_DELAY);
-  }
-
+  checkFirstLoop();
+  
   if (testValuesPositionIndex == testTemperatureValuesLength) {
     testValuesPositionIndex = 0;
   } else {
@@ -48,49 +50,59 @@ void loop() {
   temp = testTemperatureValues[testValuesPositionIndex];
   humid = testHumidityValues[testHumidityValuesIndex];
 
+  validateDataScopes();
+
+  sendData(TEMP_SYMBOL, temp);
+  sendData(TEMP_MAX_SYMBOL, tempMax);
+  sendData(TEMP_MIN_SYMBOL, tempMin);
+  
+  sendData(HUMID_SYMBOL, humid);
+  sendData(HUMID_MAX_SYMBOL, humidMax);
+  sendData(HUMID_MIN_SYMBOL, humidMax);
+
+  checkResetCommand();
+}
+
+void checkFirstLoop() {
+  if (firstLoop) {
+    delay (FIRST_LOOP_DELAY);
+    firstLoop = false;
+  } else {
+    delay(STANDART_DELAY);
+  }
+}
+
+void validateDataScopes() {
   if (firstLoop == 0) {
-    MAXT = temp;
-    MINT = temp;
-    MAXH = humid;
-    MINH = humid;
+    tempMax = temp;
+    tempMin = temp;
+    humidMax = humid;
+    humidMin = humid;
 
     firstLoop = 1;
   } else {
-    if(temp >= MAXT) {
-      MAXT = temp;
-    } else if(temp <= MINT) {
-      MINT = temp;
+    if(temp >= tempMax) {
+      tempMax = temp;
+    } else if(temp <= tempMin) {
+      tempMin = temp;
     }
-    if(humid >= MAXH) {
-      MAXH = humid;
-    } else if(temp <= MINH) {
-      MINH = humid;
+    if(humid >= humidMax) {
+      humidMax = humid;
+    } else if(temp <= humidMin) {
+      humidMin = humid;
     }
   }
+}
 
-  tempStr = (String) temp;
-  humidStr = (String) humid;
-  MAXTStr = (String) MAXT;
-  MINTStr = (String) MINT;
-  MAXHStr = (String) MAXH;
-  MINHStr = (String) MINH;
+void sendData(String symbol, float value) {
+  Serial.println(symbol + (String) value);
+  delay(ACTION_DELAY);
+}
 
-  Serial.println("t" + tempStr + " C");
-  delay(ACTION_DELAY);
-  Serial.println("h" + humidStr + "%");
-  delay(ACTION_DELAY);
-  Serial.println("m" + MAXTStr + " C");
-  delay(ACTION_DELAY);
-  Serial.println("i" + MINTStr + " C");
-  delay(ACTION_DELAY);
-  Serial.println("w" + MAXHStr + "%");
-  delay(ACTION_DELAY);
-  Serial.println("q" + MINHStr + "%");
-  delay(ACTION_DELAY);
-
+void checkResetCommand() {
   if (Serial.available() > 0) {
     incomingByte = Serial.read();
-    if(incomingByte == 'r') {
+    if(incomingByte == RESET_SYMBOL) {
       resetFunc();
     }
   }
