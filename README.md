@@ -3,7 +3,7 @@
 Temperature monitoring. Android app: https://github.com/fartem/android-remote-temperature-control-client
 
 ## Release version run configuration
-- Android application (now adopted to new Android SDK, [link](https://github.com/fartem/android-remote-temperature-client));
+- Android application;
 - Arduino (tested on UNO (original and copy));
 - power cable (using a standard cable);
 - Bluetooth module (tested on HC-05 and HC-06);
@@ -12,7 +12,7 @@ Temperature monitoring. Android app: https://github.com/fartem/android-remote-te
 - wires for connecting components.
 
 ## Test version run configuration
-- Android application (now adopted to new Android SDK, [link](https://github.com/fartem/android-remote-temperature-client));
+- Android application;
 - Arduino (tested on UNO (original and copy));
 - power cable (using a standard cable);
 - Bluetooth module (tested on HC-05 and HC-06);
