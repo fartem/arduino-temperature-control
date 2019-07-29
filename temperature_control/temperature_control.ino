@@ -37,7 +37,7 @@ void setup() {
 }
 
 void loop() {
-  checkFirstLoop();
+  loopDelay();
 
   temp = dht.readTemperature();
   humid = dht.readHumidity();
@@ -55,23 +55,22 @@ void loop() {
   checkResetCommand();
 }
 
-void checkFirstLoop() {
+void loopDelay() {
   if (firstLoop) {
     delay (FIRST_LOOP_DELAY);
-    firstLoop = false;
   } else {
     delay(STANDART_DELAY);
   }
 }
 
 void validateDataScopes() {
-  if (firstLoop == 0) {
+  if (firstLoop) {
     tempMax = temp;
     tempMin = temp;
     humidMax = humid;
     humidMin = humid;
 
-    firstLoop = 1;
+    firstLoop = false;
   } else {
     if(temp >= tempMax) {
       tempMax = temp;
@@ -80,7 +79,7 @@ void validateDataScopes() {
     }
     if(humid >= humidMax) {
       humidMax = humid;
-    } else if(temp <= humidMin) {
+    } else if(humid <= humidMin) {
       humidMin = humid;
     }
   }
