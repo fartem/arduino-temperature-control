@@ -10,7 +10,7 @@
 #define HUMID_MAX_SYMBOL "w"
 #define HUMID_MIN_SYMBOL "q"
 
-#define RESET_SYMBOL 'e'
+#define RESET_SYMBOL 'r'
 
 float temp, humid, tempMax, tempMin, humidMax, humidMin;
 float testTemperatureValues[] = { 23.4, 23.9, 24.8, 25.0, 24.1, 21.1, 27.9 };
@@ -58,7 +58,7 @@ void loop() {
   
   sendData(HUMID_SYMBOL, humid);
   sendData(HUMID_MAX_SYMBOL, humidMax);
-  sendData(HUMID_MIN_SYMBOL, humidMax);
+  sendData(HUMID_MIN_SYMBOL, humidMin);
 
   checkResetCommand();
 }
@@ -80,14 +80,14 @@ void validateDataScopes() {
 
     firstLoop = false;
   } else {
-    if(temp >= tempMax) {
+    if (temp >= tempMax) {
       tempMax = temp;
-    } else if(temp <= tempMin) {
+    } else if (temp <= tempMin) {
       tempMin = temp;
     }
-    if(humid >= humidMax) {
+    if (humid >= humidMax) {
       humidMax = humid;
-    } else if(humid <= humidMin) {
+    } else if (humid <= humidMin) {
       humidMin = humid;
     }
   }
@@ -101,7 +101,7 @@ void sendData(String symbol, float value) {
 void checkResetCommand() {
   if (Serial.available() > 0) {
     incomingByte = Serial.read();
-    if(incomingByte == RESET_SYMBOL) {
+    if (incomingByte == RESET_SYMBOL) {
       resetFunc();
     }
   }
