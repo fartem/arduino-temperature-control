@@ -1,17 +1,34 @@
-# arduino-temperature-control
+<img src="media/ic_app.png" height="100px" />
 
-Temperature monitoring. Android app: https://github.com/fartem/android-remote-temperature-control-client
+![Open issues](https://img.shields.io/github/issues-raw/fartem/arduino-temperature-control.svg?color=ff534a)
+![Last commit](https://img.shields.io/github/last-commit/fartem/arduino-temperature-control.svg?color=51539c)
+![Repo size](https://img.shields.io/github/repo-size/fartem/arduino-temperature-control.svg?color=02778b)
+[![License](https://img.shields.io/github/license/fartem/arduino-temperature-control.svg?color=7ea4b0)](https://github.com/fartem/arduino-temperature-control/blob/master/LICENSE)
 
-## Release version run configuration
+## About
+
+Temperature monitoring. Android app: https://github.com/fartem/android-remote-temperature-control-client.
+
+## Release configuration
+
+Contains in `temperature_control` folder.
+
+**Requirements**
+
 - Android application;
 - Arduino (tested on UNO (original and copy));
 - power cable (using a standard cable);
 - Bluetooth module (tested on HC-05 and HC-06);
-- temperature and humidity sensor (tested on DHT22, now adopted only for this sensor);
+- temperature and humidity sensor (tested on DHT22, now adopted only for this sensor series);
 - resistor for temperature and humidity sensor;
 - wires for connecting components.
 
-## Test version run configuration
+## Test configuration
+
+Contains in `temperature_control_test` folder.
+
+**Requirements**
+
 - Android application;
 - Arduino (tested on UNO (original and copy));
 - power cable (using a standard cable);
