@@ -3,11 +3,13 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android%20Home%20Control%20Client-brightgreen.svg?style=flat)](https://android-arsenal.com/details/3/7943)
 ![Open issues](https://img.shields.io/github/issues-raw/fartem/arduino-temperature-control.svg?color=ff534a)
 
-## About
+About
+-------------
 
 Temperature monitoring. Android app: https://github.com/fartem/android-remote-temperature-control-client.
 
-## Release configuration
+Release configuration
+-------------
 
 Contains in `temperature_control` folder.
 
@@ -21,7 +23,8 @@ Contains in `temperature_control` folder.
 - resistor for temperature and humidity sensor;
 - wires for connecting components.
 
-## Test configuration
+Test configuration
+-------------
 
 Contains in `temperature_control_test` folder.
 
