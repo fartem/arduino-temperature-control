@@ -12,7 +12,13 @@
 
 #define RESET_SYMBOL 'r'
 
-float temp, humid, tempMax, tempMin, humidMax, humidMin;
+float temperature;
+float humidity;
+float temperatureMax;
+float temperatureMin;
+float humidityMax;
+float humidityMin;
+
 float testTemperatureValues[] = { 23.4, 23.9, 24.8, 25.0, 24.1, 21.1, 27.9 };
 float testHumidityValues[] = { 67.9, 78.3, 91.1, 50.1, 50.3, 51.7, 67.5 };
 
@@ -22,9 +28,9 @@ int testHumidityValuesLength = 6;
 int testValuesPositionIndex = 0;
 int testHumidityValuesIndex = 0;
 
-char incomingByte;
+char incomingOperation;
 
-boolean firstLoop = true;
+boolean initLoop = true;
 
 void setup() {
   Serial.begin(9600);
@@ -47,48 +53,48 @@ void loop() {
     testHumidityValuesIndex++;
   }
 
-  temp = testTemperatureValues[testValuesPositionIndex];
-  humid = testHumidityValues[testHumidityValuesIndex];
+  temperature = testTemperatureValues[testValuesPositionIndex];
+  humidity = testHumidityValues[testHumidityValuesIndex];
 
-  validateDataScopes();
+  setupTrackingValues();
 
-  sendData(TEMP_SYMBOL, temp);
-  sendData(TEMP_MAX_SYMBOL, tempMax);
-  sendData(TEMP_MIN_SYMBOL, tempMin);
+  sendData(TEMP_SYMBOL, temperature);
+  sendData(TEMP_MAX_SYMBOL, temperatureMax);
+  sendData(TEMP_MIN_SYMBOL, temperatureMin);
   
-  sendData(HUMID_SYMBOL, humid);
-  sendData(HUMID_MAX_SYMBOL, humidMax);
-  sendData(HUMID_MIN_SYMBOL, humidMin);
+  sendData(HUMID_SYMBOL, humidity);
+  sendData(HUMID_MAX_SYMBOL, humidityMax);
+  sendData(HUMID_MIN_SYMBOL, humidityMin);
 
   checkResetCommand();
 }
 
 void loopDelay() {
-  if (firstLoop) {
+  if (initLoop) {
     delay(FIRST_LOOP_DELAY);
   } else {
     delay(STANDART_DELAY);
   }
 }
 
-void validateDataScopes() {
-  if (firstLoop) {
-    tempMax = temp;
-    tempMin = temp;
-    humidMax = humid;
-    humidMin = humid;
+void setupTrackingValues() {
+  if (initLoop) {
+    temperatureMax = temperature;
+    temperatureMin = temperature;
+    humidityMax = humidity;
+    humidityMin = humidity;
 
-    firstLoop = false;
+    initLoop = false;
   } else {
-    if (temp >= tempMax) {
-      tempMax = temp;
-    } else if (temp <= tempMin) {
-      tempMin = temp;
+    if (temperature >= temperatureMax) {
+      temperatureMax = temperature;
+    } else if (temperature <= temperatureMin) {
+      temperatureMin = temperature;
     }
-    if (humid >= humidMax) {
-      humidMax = humid;
-    } else if (humid <= humidMin) {
-      humidMin = humid;
+    if (humidity >= humidityMax) {
+      humidityMax = humidity;
+    } else if (humidity <= humidityMin) {
+      humidityMin = humidity;
     }
   }
 }
@@ -100,8 +106,8 @@ void sendData(String symbol, float value) {
 
 void checkResetCommand() {
   if (Serial.available() > 0) {
-    incomingByte = Serial.read();
-    if (incomingByte == RESET_SYMBOL) {
+    incomingOperation = Serial.read();
+    if (incomingOperation == RESET_SYMBOL) {
       resetFunc();
     }
   }
