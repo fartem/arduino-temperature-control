@@ -1,9 +1,9 @@
 /*
-* Adafruit_Sensor ---> https://github.com/adafruit/Adafruit_Sensor
-* DHT ---> https://github.com/adafruit/DHT-sensor-library
-*
-* If Arduino IDE can't find Adafruit_Sensor.h, uncomment Adafruit_Sensor.h include line.
-*/
+ * Adafruit_Sensor ---> https://github.com/adafruit/Adafruit_Sensor
+ * DHT ---> https://github.com/adafruit/DHT-sensor-library
+ *
+ * If Arduino IDE can't find Adafruit_Sensor.h, uncomment Adafruit_Sensor.h include line.
+ */
 //#include <Adafruit_Sensor.h>
 #include <DHT.h>
 
