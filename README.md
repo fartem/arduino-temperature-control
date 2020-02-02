@@ -13,7 +13,7 @@ Release configuration
 
 Contains in `src` folder.
 
-**Requirements**
+__Requirements:__
 
 - Android application;
 - Arduino (tested on UNO (original and copy));
@@ -28,7 +28,7 @@ Test configuration
 
 Contains in `test` folder.
 
-**Requirements**
+__Requirements:__
 
 - Android application;
 - Arduino (tested on UNO (original and copy));
