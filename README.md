@@ -1,7 +1,7 @@
 <img src="media/logo/ic_app.png" height="100px" />
 
+[![Hits-of-Code](https://hitsofcode.com/github/fartem/arduino-temperature-control)](https://hitsofcode.com/view/github/fartem/arduino-temperature-control)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android%20Home%20Control%20Client-brightgreen.svg?style=flat)](https://android-arsenal.com/details/3/7943)
-![Open issues](https://img.shields.io/github/issues-raw/fartem/arduino-temperature-control.svg?color=ff534a)
 
 About
 -------------
