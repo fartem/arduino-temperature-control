@@ -35,3 +35,13 @@ __Requirements:__
 - power cable (using a standard cable);
 - Bluetooth module (tested on HC-05 and HC-06);
 - wires for connecting components.
+
+How to contribute
+-------------
+
+Read [Commit Convention](https://github.com/fartem/repository-rules/blob/master/commit-convention/COMMIT_CONVENTION.md). Make sure your changes cannot crash the program and submit your pull request.
+
+Contributors
+-------------
+
+* [@fartem](https://github.com/fartem) as Artem Fomchenkov
