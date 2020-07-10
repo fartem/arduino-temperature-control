@@ -1,17 +1,14 @@
 <img src="media/logo/ic_app.png" height="100px" />
 
-Android Temperature Control
-=============
+# Android Temperature Control
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android%20Home%20Control%20Client-brightgreen.svg?style=flat)](https://android-arsenal.com/details/3/7943)
 
-About
--------------
+## About
 
 Temperature monitoring. Android app: https://github.com/fartem/android-remote-temperature-control-client.
 
-Release configuration
--------------
+## Release configuration
 
 Contains in `src` folder.
 
@@ -25,8 +22,7 @@ __Requirements:__
 - resistor for temperature and humidity sensor;
 - wires for connecting components.
 
-Test configuration
--------------
+## Test configuration
 
 Contains in `test` folder.
 
@@ -38,12 +34,10 @@ __Requirements:__
 - Bluetooth module (tested on HC-05 and HC-06);
 - wires for connecting components.
 
-How to contribute
--------------
+## How to contribute
 
 Read [Commit Convention](https://github.com/fartem/repository-rules/blob/master/commit-convention/COMMIT_CONVENTION.md). Make sure your changes cannot crash the program and submit your pull request.
 
-Contributors
--------------
+## Contributors
 
 * [@fartem](https://github.com/fartem) as Artem Fomchenkov
